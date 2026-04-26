@@ -6929,11 +6929,11 @@ function resetOverlayState(nextVideoEl) {
   });
   gsapWithCSS.set("#mini-click", { autoAlpha: 1, pointerEvents: "auto" });
 }
-function updateSources({ currentVideo, nextVideo, bgVideo }, nextIdx) {
-  const upcomingNext = nextIdx % totalVideos + 1;
+function updateSources({ currentVideo, nextVideo, bgVideo }) {
+  const nextIdx = upcoming();
   setSrc(nextVideo, getSrc(currentIndex));
-  setSrc(currentVideo, getSrc(upcomingNext));
-  setSrc(bgVideo, getSrc(currentIndex));
+  setSrc(currentVideo, getSrc(nextIdx));
+  setSrc(bgVideo, getSrc(currentIndex === totalVideos - 1 ? 1 : currentIndex));
 }
 function switchVideo(ctx) {
   const { currentVideo, nextVideo, bgVideo } = ctx;
@@ -6943,11 +6943,10 @@ function switchVideo(ctx) {
   }
   isAnimating = true;
   queuedClick = false;
-  const nextIdx = upcoming();
-  currentIndex = nextIdx;
+  currentIndex = upcoming();
   gsapWithCSS.killTweensOf([nextVideo, currentVideo]);
   gsapWithCSS.set("#mini-click", { pointerEvents: "none" });
-  updateSources(ctx, nextIdx);
+  updateSources(ctx);
   armAutoplayAttrs(bgVideo);
   hardAutoplay(bgVideo);
   gsapWithCSS.set(nextVideo, {
@@ -7018,7 +7017,6 @@ function boot() {
   setSrc(currentVideo, v2);
   setSrc(nextVideo, v1);
   hardAutoplay(bgVideo);
-  hardAutoplay(currentVideo);
   resetOverlayState(nextVideo);
   gsapWithCSS.set("#mini-click", { autoAlpha: 1 });
   miniClick == null ? void 0 : miniClick.addEventListener("click", (e) => {
