@@ -1,16 +1,15 @@
-![ezgif com-optimize](https://github.com/user-attachments/assets/c9a3e15f-c8fc-4ffc-9713-59c7b692b721)
+MyGames
 
-GAMELAND
-A modern portfolio website with 3d animations, stylish preloader and music toggle.
+A modern portfolio website with 3D animations, stylish preloader, and music toggle showcasing the games I play.
 
 ## Features
-- 📱 Fully responsive design
-- 🎯 3d effects/ hover card 3d
-- 🎥 Scroll mask image animation
-- ✨ Smooth scroll animations 
+- Fully responsive design
+- 3D effects and hover animations
+- Scroll mask image animation
+- Smooth scroll animations
 
-- ## Tech Stack
+## Tech Stack
 - HTML
-- SCSS/CSS (BEM methodology)
+- CSS (BEM methodology)
 - JavaScript
 - GSAP

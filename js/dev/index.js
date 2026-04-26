@@ -6933,7 +6933,7 @@ function updateSources({ currentVideo, nextVideo, bgVideo }) {
   const nextIdx = upcoming();
   setSrc(nextVideo, getSrc(currentIndex));
   setSrc(currentVideo, getSrc(nextIdx));
-  setSrc(bgVideo, getSrc(currentIndex === totalVideos - 1 ? 1 : currentIndex));
+  setSrc(bgVideo, getSrc(currentIndex));
 }
 function switchVideo(ctx) {
   const { currentVideo, nextVideo, bgVideo } = ctx;
