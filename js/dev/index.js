@@ -6929,8 +6929,7 @@ function resetOverlayState(nextVideoEl) {
   });
   gsapWithCSS.set("#mini-click", { autoAlpha: 1, pointerEvents: "auto" });
 }
-function updateSources({ currentVideo, nextVideo, bgVideo }) {
-  const nextIdx = upcoming();
+function updateSources({ currentVideo, nextVideo, bgVideo }, nextIdx) {
   setSrc(nextVideo, getSrc(currentIndex));
   setSrc(currentVideo, getSrc(nextIdx));
   setSrc(bgVideo, getSrc(currentIndex));
@@ -6943,10 +6942,11 @@ function switchVideo(ctx) {
   }
   isAnimating = true;
   queuedClick = false;
-  currentIndex = upcoming();
+  const nextIdx = upcoming();
+  currentIndex = nextIdx;
   gsapWithCSS.killTweensOf([nextVideo, currentVideo]);
   gsapWithCSS.set("#mini-click", { pointerEvents: "none" });
-  updateSources(ctx);
+  updateSources(ctx, nextIdx);
   armAutoplayAttrs(bgVideo);
   hardAutoplay(bgVideo);
   gsapWithCSS.set(nextVideo, {
